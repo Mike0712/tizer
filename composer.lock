@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "86b50b4a1e66fd59881856bdba61f332",
-    "content-hash": "630d5f1d19e73b0163f900453171fba5",
+    "hash": "536ffccfdec16c2512b56007420c1bbc",
+    "content-hash": "ca0f632d86452bdc11bcfc9235f1dd05",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -325,6 +325,57 @@
                 "html"
             ],
             "time": "2018-02-23 01:58:20"
+        },
+        {
+            "name": "smi2/phpclickhouse",
+            "version": "0.17.12.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smi2/phpClickHouse.git",
+                "reference": "e0f6c52c7deedfd499ce17f6beac2805c7c6a565"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smi2/phpClickHouse/zipball/e0f6c52c7deedfd499ce17f6beac2805c7c6a565",
+                "reference": "e0f6c52c7deedfd499ce17f6beac2805c7c6a565",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "5.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Strykhar",
+                    "email": "isublimity@gmail.com",
+                    "homepage": "https://github.com/isublimity"
+                }
+            ],
+            "description": "php ClickHouse client library",
+            "homepage": "https://github.com/smi2/phpClickHouse",
+            "keywords": [
+                "clickhouse",
+                "client",
+                "curl",
+                "driver",
+                "http",
+                "http client"
+            ],
+            "time": "2017-12-28 07:40:46"
         },
         {
             "name": "swiftmailer/swiftmailer",
