@@ -48,9 +48,16 @@ class ChmigrateController extends BaseMigrateController
         var_dump($clickhouse);die;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function addMigrationHistory($version)
     {
-        // TODO: Implement addMigrationHistory() method.
+        $command = $this->db->createCommand();
+        $command->insert($this->migrationTable, [
+            'version' => $version,
+            'apply_time' => time(),
+        ])->execute();
     }
 
     protected function removeMigrationHistory($version)
