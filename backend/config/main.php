@@ -37,14 +37,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => yii\i18n\GettextMessageSource::class,
+                    'basePath' => '@frontend/messages',
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

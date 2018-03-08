@@ -28,19 +28,4 @@ class m180228_192815_create_table_cellular_operators extends Migration
     {
         $this->dropTable('{{%cellular_operators}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m180228_192815_create_table_cellular_operators cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }
