@@ -10,31 +10,33 @@ class m180228_191754_create_table_campaigns extends Migration
     public function up()
     {
         $this->createTable('{{%campaigns}}',[
-            $this->primaryKey('id'),
-            $this->integer('user_id'),
-            $this->string('name'),
-            $this->string('url'),
-            $this->decimal('price'),
-            $this->boolean('active'),
-            $this->boolean('status'),
-            $this->integer('cpm')->defaultValue(0),
-            $this->smallInteger('cat'),
-            $this->integer('ban_categories'),
-            $this->smallInteger('type'),
-            $this->boolean('repeat'),
-            $this->boolean('systraf'),
-            $this->integer('country_id'),
-            $this->integer('operator_id'),
-            $this->string('os'),
-            $this->string('browser'),
-            $this->text('ip_white'),
-            $this->text('ip_black'),
-            $this->text('whitelist'),
-            $this->text('blacklist'),
-            $this->date('days'),
-            $this->time('hours'),
-            $this->boolean('only_img'),
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer(),
+            'name' => $this->string(),
+            'url' => $this->string(),
+            'price' => $this->decimal(),
+            'active' => $this->boolean(),
+            'status' => $this->boolean(),
+            'cpm' => $this->integer()->defaultValue(0),
+            'cpc' => $this->integer()->defaultValue(0),
+            'category_id' => $this->integer(),
+            'type' => $this->integer(),
+            'repeat' => $this->boolean(),
+            'systraf' => $this->boolean(),
+            'ip_white' => $this->boolean(),
+            'ip_black' => $this->boolean(),
+            'whitelist' => $this->boolean(),
+            'blacklist' => $this->boolean(),
+            'days' => $this->text(),
+            'hours' => $this->text(),
+            'only_img' => $this->boolean(),
+            'created_at' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()')),
+            'updated_at' => $this->timestamp()->null(),
+            'deleted' => $this->boolean()->defaultValue(false),
         ]);
+        $this->createIndex('i-campaigns', '{{%campaigns}}', ['name', 'url'], false);
+        $this->addForeignKey('fk-campaign-user', '{{%campaigns}}', 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');
+        $this->addForeignKey('fk-campaign-category', '{{%campaigns}}', 'category_id', '{{%categories}}', 'id', 'RESTRICT', 'CASCADE');
     }
 
     public function down()

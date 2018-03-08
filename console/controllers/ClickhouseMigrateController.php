@@ -11,7 +11,7 @@ use yii\di\Instance;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Console;
 
-class ChmigrateController extends BaseMigrateController
+class ClickhouseMigrateController extends BaseMigrateController
 {
     /**
      * Maximum length of a migration name.
@@ -62,7 +62,10 @@ class ChmigrateController extends BaseMigrateController
 
     protected function removeMigrationHistory($version)
     {
-        // TODO: Implement removeMigrationHistory() method.
+        $command = $this->db->createCommand();
+        $command->delete($this->migrationTable, [
+            'version' => $version,
+        ])->execute();
     }
 
     /**

@@ -12,7 +12,13 @@ class m180228_192123_create_table_faq extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%faq}}',[
+            'id' => $this->primaryKey(),
+            'title' => $this->string(),
+            'title_en' => $this->string(),
+            'text' => $this->text(),
+            'text_en' => $this->text(),
+        ]);
     }
 
     /**
@@ -20,9 +26,7 @@ class m180228_192123_create_table_faq extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_192123_create_table_faq cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%faq}}');
     }
 
     /*

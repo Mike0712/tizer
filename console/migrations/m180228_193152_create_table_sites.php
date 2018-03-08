@@ -12,7 +12,21 @@ class m180228_193152_create_table_sites extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%sites}}', [
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer(),
+            'url' => $this->string(),
+            'status' => $this->integer(),
+            'statistic_url' => $this->string(),
+            'statistic_pass' => $this->string(),
+            'confirm_status' => $this->boolean(),
+            'ban_msg' => $this->string(),
+            'created_at' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()')),
+            'updated_at' => $this->timestamp()->null(),
+            'deleted' => $this->boolean()->defaultValue(false)
+        ]);
+        $this->createIndex('i-sites', '{{%sites}}', ['url', 'status', 'confirm_status'], false);
+        $this->addForeignKey('fk-site-user', '{{%sites}}', 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');
     }
 
     /**
@@ -20,23 +34,6 @@ class m180228_193152_create_table_sites extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_193152_create_table_sites cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%sites}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m180228_193152_create_table_sites cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

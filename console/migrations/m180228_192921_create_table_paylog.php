@@ -12,7 +12,17 @@ class m180228_192921_create_table_paylog extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%paylog}}',[
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer(),
+            'type_id' => $this->integer(),
+            'status' => $this->integer(),
+            'order_date' => $this->dateTime(),
+            'confirm_date' => $this->dateTime(),
+            'details' => $this->string(),
+            'sum' => $this->integer(),
+        ]);
+        $this->addForeignKey('fk-paylog-user', '{{%paylog}}', 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');
     }
 
     /**
@@ -20,23 +30,6 @@ class m180228_192921_create_table_paylog extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_192921_create_table_paylog cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%paylog}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m180228_192921_create_table_paylog cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

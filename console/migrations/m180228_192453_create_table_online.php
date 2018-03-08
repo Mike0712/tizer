@@ -12,7 +12,12 @@ class m180228_192453_create_table_online extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%users_online}}',[
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer(),
+            'last_visit' => $this->dateTime(),
+        ]);
+        $this->addForeignKey('fk-online-user', '{{%users_online}}', 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');
     }
 
     /**
@@ -20,9 +25,7 @@ class m180228_192453_create_table_online extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_192453_create_table_online cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%users_online}}');
     }
 
     /*

@@ -12,7 +12,13 @@ class m180228_192945_create_table_profit extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%profit}}',[
+            'id' => $this->primaryKey(),
+            'date' => $this->dateTime(),
+            'sum' => $this->decimal(),
+            'created_at' => $this->timestamp()->defaultValue(new \yii\db\Expression('NOW()')),
+            'updated_at' => $this->timestamp()->null(),
+        ]);
     }
 
     /**
@@ -20,23 +26,6 @@ class m180228_192945_create_table_profit extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_192945_create_table_profit cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%profit}}');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m180228_192945_create_table_profit cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

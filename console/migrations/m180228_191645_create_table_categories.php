@@ -5,14 +5,14 @@ use yii\db\Migration;
 /**
  * Class m180228_191851_create_table_categories
  */
-class m180228_191851_create_table_categories extends Migration
+class m180228_191645_create_table_categories extends Migration
 {
     public function up()
     {
         $this->createTable('{{%categories}}',[
-            $this->primaryKey('id'),
-            $this->string('name'),
-            $this->string('name_en'),
+            'id' => $this->primaryKey(),
+            'name' => $this->string(),
+            'name_en' => $this->string(),
         ]);
     }
 

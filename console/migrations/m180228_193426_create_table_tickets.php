@@ -12,7 +12,15 @@ class m180228_193426_create_table_tickets extends Migration
      */
     public function safeUp()
     {
-
+        $this->createTable('{{%ticket}}', [
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer(),
+            'name' => $this->string(),
+            'status' => $this->integer(),
+            'date' => $this->dateTime(),
+            'new' => $this->boolean()
+        ]);
+        $this->addForeignKey('fk-ticket-user', '{{%ticket}}', 'user_id', '{{%users}}', 'id', 'RESTRICT', 'CASCADE');
     }
 
     /**
@@ -20,9 +28,7 @@ class m180228_193426_create_table_tickets extends Migration
      */
     public function safeDown()
     {
-        echo "m180228_193426_create_table_tickets cannot be reverted.\n";
-
-        return false;
+        $this->dropTable('{{%ticket}}');
     }
 
     /*
